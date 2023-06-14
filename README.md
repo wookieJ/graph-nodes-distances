@@ -28,19 +28,19 @@ curl -s -X POST 'http://localhost:8080/graphs/nodes' \
             },
             {
                 "id": "C",
-                "type": "RED"
+                "type": "BLUE"
             }
         ],
         "B": [
             {
                 "id": "A",
-                "type": "BLUE"
+                "type": "RED"
             }
         ],
         "C": [
             {
                 "id": "A",
-                "type": "RED"
+                "type": "BLUE"
             }
         ]
     },

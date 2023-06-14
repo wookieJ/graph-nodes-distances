@@ -1,7 +1,7 @@
 package graph.nodes.infrastructure.rest;
 
 import graph.nodes.application.GraphValidator;
-import graph.nodes.application.InvalidGraphException;
+import graph.nodes.application.exception.InvalidGraphException;
 import graph.nodes.application.UnweightedGraphService;
 import graph.nodes.infrastructure.rest.model.GraphRequest;
 import graph.nodes.infrastructure.rest.model.NodesListResponse;
@@ -24,13 +24,11 @@ public class GraphController {
     }
 
     @PostMapping(value = "/graphs/nodes", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<NodesListResponse> getNodes(@RequestBody GraphRequest graphRequest) throws InvalidGraphException {
+    public ResponseEntity<NodesListResponse> getNodes(@RequestBody GraphRequest graphRequest) throws RuntimeException {
         System.out.println(graphRequest);
         graphValidator.isValid(graphRequest.getGraph(), graphRequest.getStartNode());
         var nodesDistances = unweightedGraphService.getNodesWithDistances(graphRequest.toDomain(), graphRequest.getStartNode());
         var nodesResponse = new NodesListResponse(nodesDistances);
         return ResponseEntity.ok(nodesResponse);
     }
-
-    // todo - add error handling (Error Handler)
 }

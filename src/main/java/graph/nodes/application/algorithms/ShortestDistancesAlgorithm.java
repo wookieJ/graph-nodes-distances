@@ -28,7 +28,7 @@ public class ShortestDistancesAlgorithm {
         for (String node : adjacencyList.keySet()) {
             var visited = new HashSet<String>();
             Distance result = calcDistanceToRoot(node, adjacencyList, node, cache, visited);
-            distances.put(node, result.getDistance());
+            distances.put(node, result.distance());
         }
         return distances;
     }
@@ -45,7 +45,7 @@ public class ShortestDistancesAlgorithm {
                 .map(neighbor -> {
                     var neighborDistance = calcDistanceToRoot(neighbor.getDestNode(), adjacencyList, startNode, cache, visited);
                     long redEdgesToNeighbor = neighbor.getType() == EdgeType.RED ? 1 : 0;
-                    return new Distance(neighborDistance.getDistance() + 1, neighborDistance.getRedEdgesNumber() + redEdgesToNeighbor);
+                    return new Distance(neighborDistance.distance() + 1, neighborDistance.redEdgesNumber() + redEdgesToNeighbor);
                 })
                 .min(Distance::compareTo);
         if (shortestNeighboursDistance.isPresent()) {

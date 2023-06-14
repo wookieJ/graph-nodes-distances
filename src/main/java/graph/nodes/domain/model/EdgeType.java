@@ -1,4 +1,4 @@
-package io.mend.interview.domain.model;
+package graph.nodes.domain.model;
 
 public enum EdgeType {
     RED, BLUE

@@ -1,6 +1,6 @@
-package io.mend.interview.application;
+package graph.nodes.application;
 
-import io.mend.interview.domain.model.Edge;
+import graph.nodes.domain.model.Edge;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,9 +1,9 @@
-package io.mend.interview.domain.model;
+package graph.nodes.domain.model;
 
 public class Edge {
-    private String destNode;
+    private final String destNode;
 
-    private EdgeType type;
+    private final EdgeType type;
 
     public String getDestNode() {
         return destNode;

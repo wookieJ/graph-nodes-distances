@@ -1,10 +1,10 @@
-package io.mend.interview.infrastructure.rest;
+package graph.nodes.infrastructure.rest;
 
-import io.mend.interview.application.GraphValidator;
-import io.mend.interview.application.InvalidGraphException;
-import io.mend.interview.application.UnweightedGraphService;
-import io.mend.interview.domain.model.GraphRequest;
-import io.mend.interview.domain.model.NodesListResponse;
+import graph.nodes.application.GraphValidator;
+import graph.nodes.application.InvalidGraphException;
+import graph.nodes.application.UnweightedGraphService;
+import graph.nodes.infrastructure.rest.model.GraphRequest;
+import graph.nodes.infrastructure.rest.model.NodesListResponse;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +27,7 @@ public class GraphController {
     public ResponseEntity<NodesListResponse> getNodes(@RequestBody GraphRequest graphRequest) throws InvalidGraphException {
         System.out.println(graphRequest);
         graphValidator.isValid(graphRequest.getGraph(), graphRequest.getStartNode());
-        var nodesDistances = unweightedGraphService.getNodesWithDistances(graphRequest.getGraph(), graphRequest.getStartNode());
+        var nodesDistances = unweightedGraphService.getNodesWithDistances(graphRequest.toDomain(), graphRequest.getStartNode());
         var nodesResponse = new NodesListResponse(nodesDistances);
         return ResponseEntity.ok(nodesResponse);
     }

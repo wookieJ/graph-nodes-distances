@@ -1,26 +1,17 @@
-package io.mend.interview.application;
+package graph.nodes.application.algorithms;
 
-import io.mend.interview.domain.model.Edge;
-import io.mend.interview.domain.model.EdgeType;
-import io.mend.interview.domain.model.NodeResponse;
-import org.springframework.stereotype.Service;
+import graph.nodes.domain.model.Edge;
+import graph.nodes.domain.model.EdgeType;
+import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
 
-@Service
-public class UnweightedGraphService {
-    public List<NodeResponse> getNodesWithDistances(Map<String, List<Edge>> graph, String startNode) {
-        if (graph.isEmpty() || startNode.isEmpty()) {
-            return List.of();
-        }
-        var distances = shortestDistance(graph, startNode);
-        return distances.entrySet()
-                .stream()
-                .map(entry -> new NodeResponse(entry.getKey(), entry.getValue()))
-                .toList();
-    }
-
-    public static Map<String, Long> shortestDistance(Map<String, List<Edge>> adjacencyList, String startNode) {
+@Component
+public class ShortestDistancesAlgorithm {
+    public Map<String, Long> shortestDistance(Map<String, List<Edge>> adjacencyList, String startNode) {
         Map<String, Long> distances = new HashMap<>();
         distances.put(startNode, 0L);
 

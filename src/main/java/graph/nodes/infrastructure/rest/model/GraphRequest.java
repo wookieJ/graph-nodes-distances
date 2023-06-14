@@ -1,5 +1,8 @@
-package io.mend.interview.domain.model;
+package graph.nodes.infrastructure.rest.model;
 
+
+import graph.nodes.domain.model.Graph;
+import graph.nodes.domain.model.Edge;
 
 import java.util.List;
 import java.util.Map;
@@ -18,6 +21,10 @@ public class GraphRequest {
     }
 
     public GraphRequest() {
+    }
+
+    public Graph toDomain() {
+        return new Graph(this.graph);
     }
 
     @Override

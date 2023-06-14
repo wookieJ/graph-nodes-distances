@@ -1,4 +1,4 @@
-package io.mend.interview.domain.model;
+package graph.nodes.infrastructure.rest.model;
 
 public class NodeResponse {
     private String id;

@@ -1,4 +1,4 @@
-package io.mend.interview;
+package graph.nodes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
